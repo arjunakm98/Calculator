@@ -1,23 +1,335 @@
-# Compiled class file
-*.class
 
-# Log file
-*.log
+    import java.awt.Color;
+import java.awt.event.ActionEvent;
+	import java.awt.event.ActionListener;
+     import javax.swing.JButton;
+	import javax.swing.JFrame;
+	import javax.swing.JLabel;
+	import javax.swing.JTextField;
+    import javax.swing.Spring;
 
-# BlueJ files
-*.ctxt
+	public class Calculator extends JFrame implements ActionListener
+	{	
+	int fact(int a) {
+		if(a==0)
+		return 1;
+		else
+			return a*fact(a-1);
+		
+	}
+		String x,y,m,n;
+		float a,b;
+		JLabel l1, l2, l3,l4,l5;
+		JButton b1, b2,b3,b4,b5,b6,b7,b8,b9,b10,b11;
+		JTextField nf1,nf2;
+		JTextField  of,rf;
+		
+		public void calPro() 
+		{
+			super.setBounds(100, 100, 900, 800);
+			super.setResizable(true);
+			super.setTitle("CALCULATOR SCREEN");
+			super.setBackground(Color.BLUE);
+			
+			l1 = new JLabel("NUMBER1");
+			l1.setBounds(140, 150, 200, 50);
+			super.add(l1);
+			
+			nf1 = new JTextField();
+			nf1.setBounds(340, 150, 200, 50);
+			super.add(nf1);
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+			l2 = new JLabel("NUMBER2");
+			l2.setBounds(140, 250, 200, 50);
+			super.add(l2);
+			
+			nf2 = new JTextField();
+			nf2.setBounds(350, 250, 200, 50);
+			super.add(nf2);
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+			l3 = new JLabel("OPERATION");
+			l3.setBounds(140, 350, 200, 50);
+			super.add(l3);
+			
+			of = new JTextField();
+			of.setBounds(350, 350, 400, 50);
+			super.add(of);
+			
+			l4 = new JLabel("RESULT");
+			l4.setBounds(140, 450, 200, 50);
+			super.add(l4);
+			
+			rf = new JTextField();
+			rf.setBounds(340, 450, 200, 50);
+			super.add(rf);
+			
+			b1 = new JButton("ADDITION");
+			b1.setBounds(140, 550, 100, 30);
+			super.add(b1);
+			b1.setBackground(Color.CYAN);
+			b1.addActionListener(this);
+			
+			b2 = new JButton("SUBTRACT");
+			b2.setBounds(290, 550, 100, 30);
+			super.add(b2);
+			b2.setBackground(Color.CYAN);
+			b2.addActionListener(this);
+			
+			b3 = new JButton("MULTIPLY");
+			b3.setBounds(440, 550, 100, 30);
+			super.add(b3);
+			b3.setBackground(Color.CYAN);
+			b3.addActionListener(this);
+			
+			b4 = new JButton("DIVIDE");
+			b4.setBounds(590, 550, 100, 30);
+			super.add(b4);
+			b4.setBackground(Color.CYAN);
+			b4.addActionListener(this);
+			
+			b5 = new JButton("Squareroot");
+			b5.setBounds(140, 650, 100, 30);
+			super.add(b5);
+			b5.setBackground(Color.CYAN);
+			b5.addActionListener(this);
+			
+			b6 = new JButton("MAXIMUM");
+			b6.setBounds(290, 650, 100, 30);
+			super.add(b6);
+			b6.setBackground(Color.CYAN);
+			b6.addActionListener(this);
+			
+			b7 = new JButton("MINIMUM");
+			b7.setBounds(440, 650, 100, 30);
+			super.add(b7);
+			b7.setBackground(Color.CYAN);
+			b7.addActionListener(this);
+			
+			b8 = new JButton("factorial");
+			b8.setBounds(590, 650, 100, 30);
+			super.add(b8);
+			b8.setBackground(Color.CYAN);
+			b8.addActionListener(this);
+			
+			b9 = new JButton("Cube");
+			b9.setBounds(740, 550, 100, 30);
+			super.add(b9);
+			b9.setBackground(Color.CYAN);
+			b9.addActionListener(this);
+			
+			b10 = new JButton("Reset");
+			b10.setBounds(740, 650, 100, 30);
+			super.add(b10);
+			b10.setBackground(Color.CYAN);
+			b10.addActionListener(this);
+			
+			super.setLayout(null);
+			super.setVisible(true);
+			super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+		
+		public static void main(String[] args) 
+		{
+			Calculator obj = new Calculator();
+			obj.calPro();
+		}
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+		
+		public void actionPerformed(ActionEvent e)
+		{
+						
+		    String m=nf1.getText();
+			String n=nf2.getText();
+			if(m.isEmpty()==true)
+			{
+				if(e.getSource()==b1||e.getSource()==b2||e.getSource()==b3||
+	     e.getSource()==b4||e.getSource()==b5||e.getSource()==b6||
+	     e.getSource()==b7||e.getSource()==b8||e.getSource()==b9)
+			{
+				of.setText("INVALID Please first atleast number1....");
+				rf.setText("***error***");
+				of.setBackground(Color.green);
+				rf.setBackground(Color.green);
+				nf1.setBackground(Color.RED);
+				nf2.setBackground(Color.RED);
+				}
+				if(e.getSource() == b10)
+				{
+					nf1.setText(null);
+					nf1.setBackground(Color.white);
+					nf2.setText(null);
+					nf2.setBackground(Color.white);
+					of.setText(null);
+					of.setBackground(Color.white);
+					rf.setText(null);
+					rf.setBackground(Color.white);
+					
+				}
+				
+				return;
+				}
+			try {
+	if(e.getSource()==b1)
+			{
+				String x = nf1.getText();
+				float a = Float.parseFloat(x);
+				String y = nf2.getText();
+				float b =Float.parseFloat(y);
+				 float c = a + b;
+				String z = String.valueOf(c);
+				of.setText("This operation is Addition");
+				rf.setText(z);
+				}
+
+	if(e.getSource()==b2)
+		{
+		String x = nf1.getText();
+		float a = Float.parseFloat(x);
+		String y = nf2.getText();
+		float b = Float.parseFloat(y);
+		 float c = a-b;
+		String z = String.valueOf(c);
+		of.setText("This operation is Subtraction");
+		rf.setText(z);
+		}
+	if(e.getSource()==b3)
+	{
+		String x = nf1.getText();
+		float a = Float.parseFloat(x);
+		String y = nf2.getText();
+		float b = Float.parseFloat(y);
+		 float c = a*b;
+		String z = String.valueOf(c);	
+		of.setText("This operation is Multiplication");
+		rf.setText(z);
+		}
+	if(e.getSource() == b4)
+	{
+		String x = nf1.getText();
+	float a = Float.parseFloat(x);
+	String y = nf2.getText();
+	float b = Float.parseFloat(y);
+		if(b!=0)
+		{
+			float c = a/b;
+			String z = String.valueOf(c);
+			of.setText("This operation is Division");
+			rf.setText(z);
+		}
+		else
+		{
+		
+			of.setText("UNDEFINED");
+			rf.setText("***error***");
+		}
+			
+	}
+	if(e.getSource() == b5)
+	{
+
+		String x = nf1.getText();
+		//String y = nf2.getText();\
+		
+		double st = Double.parseDouble(x);
+		if(st>0) {
+		double rt = Math.sqrt(st);
+		of.setText("Squareroot of NUMBER1 ");
+		rf.setText(String.valueOf(rt));
+		}
+		else
+		{
+			of.setText("Please enter positive numbers ");
+			
+		}	
+	}
+
+	if(e.getSource() == b6)
+	{
+		String x = nf1.getText();
+		float a = Float.parseFloat(x);
+		String y = nf2.getText();
+		float b = Float.parseFloat(y);
+		if(a>b) 
+		{
+			of.setText("NUMBER1 is maximum value");
+			rf.setText(x);
+		}
+		else
+		{ 
+			rf.setText(y);
+			of.setText("NUMBER2 is maximum value");
+			
+		}
+	}
+	if(e.getSource()==b7)
+	{
+		String x1 =nf1.getText();
+		float a1 = Float.parseFloat(x1);
+		String y1 = nf2.getText();
+		float b1 = Float.parseFloat(y1);
+		{	
+		if(a1<b1) 
+		{
+			of.setText("NUMBER1 is manimum value");
+			rf.setText(x1);
+		}
+		else
+		{ 
+			of.setText("NUMBER2 is manimum value");
+			rf.setText(y1);
+		}	
+	}
+	}
+		if(e.getSource() == b10)
+		{
+		nf1.setText(null);
+		nf1.setBackground(Color.white);
+		nf2.setText(null);
+		nf2.setBackground(Color.white);
+		of.setText(null);
+		of.setBackground(Color.white);
+		rf.setText(null);
+		rf.setBackground(Color.white);
+		
+		}
+		if(e.getSource()==b9)
+		{
+			String x1 =nf1.getText();
+			float a1 = Float.parseFloat(x1);
+			//String y1 = nf2.getText();
+			//float b1 = Float.parseFloat(y1);
+		      float f =a1*(a1*a1);
+			of.setText("Cube of NUMBER1 ");
+			String sa = String.valueOf(f);
+			rf.setText(sa);
+			
+		}
+		
+		if(e.getSource() == b8)
+		{
+			String x = nf1.getText();
+			int a = Integer.parseInt(x);
+			String y = nf2.getText();
+			//float b = Float.parseFloat(y);
+			
+			
+			 int rs = fact(a);
+			 String sg = String.valueOf(rs);
+				of.setText("factorial of NUMBER1 ");
+				rf.setText(sg);
+	
+		}
+	}
+	
+		
+			catch(Exception e1)
+			{ 
+				nf1.setBackground(Color.RED);
+				nf2.setBackground(Color.RED);
+				of.setText("please enter number only");
+				rf.setText("***error***");
+				
+			}
+		}
+	}
+
